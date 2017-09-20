@@ -5,7 +5,7 @@ from subprocess import call
 
 if len(argv) == 1:
     for k, v in emoji_data_python.emoji_short_names.items():
-        print(v.name, v.char, sep="\t")
+        print(" ".join(v.short_name.split("_")), v.char, sep="\t")
 else:
     name, emoji = argv[1].split("\t")
     codepoints = [ord(c) for c in emoji]
