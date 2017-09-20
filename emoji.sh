@@ -1962,6 +1962,18 @@ knowing smirk	(¬‿¬)
 dance	♪~ ᕕ(ᐛ)ᕗ
 "
 
-line=$(echo -n "$emoji_list" "$textface_list" | rofi -mesg "Choose an emoji!" -dmenu -i)
-emoji=$(echo -n "$line" | cut -f2 -)
-echo -n "$emoji" | xdotool type --clearmodifiers --file -
+CLIPBOARD_BASED=true
+
+line=$(echo -n "$emoji_list" "$textface_list" | rofi -mesg "Choose an emoji!" -dmenu -i);
+emoji=$(echo -n "$line" | cut -f2 -);
+
+if [ "$CLIPBOARD_BASED" = true ] ; then
+    clipbord_tmp=$(xclip -o -selection clipboard);
+    echo -n "$emoji" | xclip -i -selection clipboard;
+    xdotool key --clearmodifiers "ctrl+v";
+    sleep 0.5;
+    echo -n "$clipboard_tmp" | xclip -i -selection clipboard;
+else
+    echo -n "$emoji" | xdotool type --clearmodifiers --file -;
+fi
+# echo -n "$emoji" | xdotool type --clearmodifiers --file -;
