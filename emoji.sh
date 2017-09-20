@@ -1935,8 +1935,8 @@ man-bouncing-ball	⛹️‍♂️
 "
 textface_list="lenny	( ͡° ͜ʖ ͡°)
 shrug	¯\_(ツ)_/¯
-lennies ( ͡°( ͡° ͜ʖ( ͡° ͜ʖ ͡°)ʖ ͡°) ͡°)
-dollar  [̲̅$̲̅(̲̅5̲̅)̲̅$̲̅]
+lennies	( ͡°( ͡° ͜ʖ( ͡° ͜ʖ ͡°)ʖ ͡°) ͡°)
+dollar	[̲̅$̲̅(̲̅5̲̅)̲̅$̲̅]
 peek	 ┬┴┬┴┤ ͜ʖ ͡°) ├┬┴┬┴
 cry (;´༎ຶД༎ຶ\`)
 rage	 ｡゜(｀Д´)゜｡
@@ -1968,11 +1968,10 @@ line=$(echo -n "$emoji_list" "$textface_list" | rofi -mesg "Choose an emoji!" -d
 emoji=$(echo -n "$line" | cut -f2 -);
 
 if [ "$CLIPBOARD_BASED" = true ] ; then
-    clipbord_tmp=$(xclip -o -selection clipboard);
-    echo -n "$emoji" | xclip -i -selection clipboard;
-    xdotool key --clearmodifiers "ctrl+v";
-    sleep 0.5;
-    echo -n "$clipboard_tmp" | xclip -i -selection clipboard;
+    clipboard_tmp=$(xclip -o);
+    echo -n "$emoji" | xclip -i;
+    xdotool click 2;
+    echo -n "$clipboard_tmp" | xclip -i;
 else
     echo -n "$emoji" | xdotool type --clearmodifiers --file -;
 fi
