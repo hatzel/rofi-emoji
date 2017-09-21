@@ -1933,46 +1933,7 @@ man-playing-handball	🤾‍♂️
 woman-bouncing-ball	⛹️‍♀️
 man-bouncing-ball	⛹️‍♂️
 "
-textface_list="lenny	( ͡° ͜ʖ ͡°)
-shrug	¯\_(ツ)_/¯
-lennies	( ͡°( ͡° ͜ʖ( ͡° ͜ʖ ͡°)ʖ ͡°) ͡°)
-dollar	[̲̅$̲̅(̲̅5̲̅)̲̅$̲̅]
-peek	 ┬┴┬┴┤ ͜ʖ ͡°) ├┬┴┬┴
-cry (;´༎ຶД༎ຶ\`)
-rage	 ｡゜(｀Д´)゜｡
-machine gun ▄︻̷̿┻̿═━一
-fight me	(ง ͠° ͟ل͜ ͡°)ง
-simple fight me	 (ง'̀-'́)ง
-look of disapproval	ಠ_ಠ
-glitter	(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
-double glitter	(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ ✧ﾟ･: *ヽ(◕ヮ◕ヽ)
-adventure time with finn and jake	| (• ◡•)| (❍ᴥ❍ʋ)
-kiss	(づ￣ ³￣)づ
-tableflip	(╯°□°）╯︵ ┻━┻
-mad	ᕦ(ò_óˇ)ᕤ
-simple machine gun	⌐╦╦═─
-me gusta	ಠ⌣ಠ
-satisfied	(▰˘◡˘▰)
-annoyed	¬_¬
-mopey	ب_ب
-teddy	ʕ•ᴥ•ʔ
-hug ༼ つ ◕_◕ ༽つ
-kirby hug	(づ｡◕‿‿◕｡)づ
-knowing smirk	(¬‿¬)
-dance	♪~ ᕕ(ᐛ)ᕗ
-"
-
-CLIPBOARD_BASED=true
 
 line=$(echo -n "$emoji_list" "$textface_list" | rofi -mesg "Choose an emoji!" -dmenu -i);
 emoji=$(echo -n "$line" | cut -f2 -);
-
-if [ "$CLIPBOARD_BASED" = true ] ; then
-    clipboard_tmp=$(xclip -o);
-    echo -n "$emoji" | xclip -i;
-    xdotool click 2;
-    echo -n "$clipboard_tmp" | xclip -i;
-else
-    echo -n "$emoji" | xdotool type --clearmodifiers --file -;
-fi
-# echo -n "$emoji" | xdotool type --clearmodifiers --file -;
+echo -n "$emoji" | xdotool type --file -
